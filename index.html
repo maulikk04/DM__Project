@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body style="background-color: black;">
+  <h1>The Shortest Path to Destination</h1>
+  <div class="center-image">
+    <img src="./images/image12.jpeg">
+  </div>
+  <div class="card" style="background-color: black;">
+    <div class="card-content">
+
+      <h3 class="introh3">Problem Statement :</h3>
+      <p>Consider n vertices/nodes in a graph and two vertices ni and nf ,
+        where ni is the initial/source vertex and nf is the final/destination
+        vertex. We need to find the shortest path between ni and nf , provided
+        the costs between any two nodes are given.</p>
+      <h3 class="introh3">Initial Approaches :</h3>
+      <p>
+        All problems of path finding tend to be solved by certain algorithms.
+        All such algorithms are based on the use of graph theory
+        which is one of the major topics in Discrete Mathematics.</p>
+      <p>
+        Graph theory has a lot of applications such as,
+      <ul>
+        <li>Finding shortest path</li>
+        <li>Studying language grammar trees </li>
+        <li>Designing electrical circuits</li>
+        <li>Designing computer</li>
+      </ul>
+      </p>
+      <p>
+        Here,we use algorithms that are based on graph theory and combinatorics.
+      </p>
+      <p>
+        There are many algorithms for path finding which solve problems
+         of varying complexities.The most basic algorithm to first
+        approach the problem is Djikstra’s algorithm which uses classical
+        graph theory.</p>
+      <p>
+        Most path finding algorithms fall in one of the the three types: </p>
+      <ul>
+        <li>Single-Source Shortest Path :</li>
+      </ul>
+      <p>
+        Algorithms finding shortest path from a defined source vertex
+      to a destination vertex or all vertexes.E.g. Djikstra’s Algorithm.
+      </p>
+      <ul><li>All-pairs Shortest Path :</li></ul>
+      <p>
+        Algorithms finding shortest path
+        between all vertexes. E.g. Flyod-Warshall Algorithm
+      </p>
+      <ul><li>k-Shortest Path :</li></ul>
+      <p>
+       Algorithms that not only find the shortest
+      path but also find the 2nd shortest,3rd shortest .... kth shortest
+      paths which is the k in the name. E.g. Eppestien’s Algorithm.
+      </p>
+      <p>
+      Algorithms also vary for weighted and unweighted graphs.
+      Path finding algorithms have evolved as development occurred
+      in the fields of computer science and electronics.Main existing
+      algorithms,nowadays, not only find the shortest paths but also
+      the least fared paths and consider the obstacles in between the
+      nodes.However, we keep our approach only to basic path finding
+      algorithms.</p>
+      <h3 class="introh3">Shortest Path Algorithms :</h3>
+      <p> 
+      In our approach to the path finding problem, we will use 3 algorithms
+      namely,</p>
+      <ul>
+        <li>Djikstra’s Algorithm</li>
+        <li>Bellman-Ford Algorithm</li>
+        <li>Flyod-Warshall Algorithm</li>
+      </ul>
+      <div>
+        <h3 class="introh3">Basic Algorithm behind the working in the Software implementation : </h3>
+        <ul><li><a href="https://onlinegdb.com/rsUNDttV-" style="color: rgb(146, 236, 243); font-size: 18px; ">https://onlinegdb.com/rsUNDttV-</a></li></ul>
+        </div>
+    </div>
+  </div>
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        
+        <a href="dijkstra.html">
+          <img src="./images/image1.png" class="d-block w-50 img-fluid mx-auto" id="img1" style="cursor: pointer; margin-left: 200px; margin-bottom: 78px;"
+            alt="Dijkstra Algorithm">
+        </a>
+        <br><br><br><br><br><br><br>
+        <div class="carousel-caption d-none d-md-block " style="background-color: black; margin-bottom: 115px; padding: 1px;font-size: 8px;  margin-left: 300px; margin-bottom: 100px; ">
+          <a href="dijkstra.html" style="text-decoration: none;">
+            <h2 style="color: white;"  class="caption-title">Dijkstra Algorithm</h2>
+          </a>
+          <p style="color: white;">Single Source Shortest Path.</p>
+          <a href="dijkstra.html" style="text-decoration: none;"><p style="color: white;" class="caption-link">Click for more Info..</p></a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <a href="bellmanford.html">
+          <img src="./images/image7.png" class="d-block w-50 img-fluid mx-auto" id="img1" style="cursor: pointer; margin-left: 200px; margin-bottom: 250px;"
+            alt="Bellman Ford Algorithm">
+        </a>
+        <div class="carousel-caption d-none d-md-block" style="background-color: black; margin-bottom: 115px; padding: 1px;font-size: 8px;  margin-left: 300px; margin-bottom: 100px; ">
+          
+          <a href="bellmanford.html" style="text-decoration: none;">
+            <h2 style="color: white;">Bellman Ford Algorithm</h2>
+          </a>
+          <p style="color: white;" class="caption-text">Find Shortest Path.</p>
+          <a href="bellmanford.html" style="text-decoration: none;"><p style="color: white;">Click for more Info..</p></a>
+        
+        </div>
+        
+      </div>
+      <div class="carousel-item">
+        <a href="floydwarshal.html">
+          <img src="./images/image13.png" class="d-block w-50 img-fluid mx-auto custom-image" id="img1"style="cursor: pointer; margin-bottom: 81px;"
+            alt="Floyd Warshal Algorithm" id="image">
+        </a>
+        <br><br><br><br><br><br><br>
+        <div class="carousel-caption d-none d-md-block" style="background-color: black; margin-left: 300px;">
+          <a href="floydwarshal.html" style="text-decoration: none;">
+            <h2 style="color: white;">Floyd Warshall Algorithm</h2>
+          </a>
+          <p style="color: white;">All Pair Shortest Path.</p>
+          <a href="floydwarshal.html"  style="text-decoration: none;"><p style="color: white;">Click for more Info..</p></a>
+        </div>
+
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+</body>
+
+</html>
+

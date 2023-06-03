@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bellman Ford</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="background-color: black;">
+    <h1>The Shortest Path to Destination</h1>
+    <h3 class="introh3" style="text-align: center; font-size: 30px; margin-top: 10px; ">BELLMAN FORD ALGORITHM</h3>
+    <div class="card" style="background-color: black;">
+        <div class="card-content">
+            <div>
+                <h3 class="introh3">Introduction :</h3>
+            </div>
+            <div style="margin-left: 50px;">
+                <p>The bellman ford algorithm is an algorithm used for computing the shortest path of all vertices of a
+                    weighted graph with respect to the source vertex .It is named after Richard Bellman and Lester Ford
+                    Jr.It is used in calculating heat absorbed or released in chemical reactions and in depicting a
+                    transactional diagram of a particular graph in money transactions.It uses Dynamic Programming approach.</p>
+            </div>
+            <div>
+                <h3 class="introh3">Steps of Algorithm :</h3>
+            </div>
+            <div style="margin-left: 50px;">
+                <ol>
+                    <li> First initialize distances from the source to all vertices as infinite and distance to the
+                        source vertex
+                        itself as 0. Initialize an array distance[] of size |V| with all values as infinite except
+                        distance[source] where source
+                        means source vertex.</li>
+                    <li>Then calculate shortest distances. Loop the following |V|-1 times where |V| is the number
+                        of vertices in given graph. Do following for each edge u-v
+                        If dist[v] > dist[u] + weight of edge (u,v), then update dist[v] to
+                        dist[v] = dist[u] + weight of edge (u,v).</li>
+                    <li>Now find if there is a negative weight cycle in the graph. Again traverse every edge and do
+                        following for each edge (u,v)
+                        If dist[v] > dist[u] + weight of edge uv, then “Graph contains negative weight cycle”.</li>
+                </ol>
+                <p><b>Note : </b> Step 3 is used to guarantee the shortest distances if the graph doesn’t
+                    contain a negative weight cycle. If we iterate one more time and get a shorter
+                    path for any vertex, then it means there is a negative weight cycle.
+                </p>
+            </div>
+            <div>
+                <h3 class="introh3">Algorithm :</h3>
+            </div>
+            <div>
+                <p style="margin-left: 25px;">function bellmanFord(Graph, Source)</p>
+                <p style="margin-left: 60px;">for each vertex V in Graph</p>
+                <p style="margin-left: 75px;">
+                    distance[V] <- infinite </p>
+                        <p style="margin-left: 60px; padding-top: 15px;">distance[Source] <- 0 </p>
+                                <p style="margin-left: 60px; padding-top:15px ;">for each vertex V in Graph </p>
+                                <p style="margin-left: 80px;">for each edge (U,V) in Graph</p>
+                                <p style="margin-left: 95px;">if distance[U]+weight(U,V) < distance[V]</p>
+                                        <p style="margin-left: 115px;">distance[V]=distance[U]+weight(U,V)</p>
+                                        <p style="margin-left: 60px; padding-top:15px ;">for each edge (U,V) in Graph
+                                        </p>
+                                        <p style="margin-left: 80px;">If distance[U] + edge_weight(U, V) <
+                                                distance[V]</p>
+                                                <p style="margin-left: 100px;">print "Negative Cycle Exists"</p>
+                                                <p style="margin-left: 60px;">return distance[]</p>
+            </div>
+            <div>
+                <h3 class="introh3">Illustration of the Algorithm :</h3>
+            </div>
+            <div style="text-align: center;">
+                <img src="./images/image7.png">
+            </div>
+            <div>
+                <div style="margin-left: 25px;">
+                    <ul>
+                        <li>We will set the vertex '0' as the source and set its distance
+                            as 0.</li>
+                        <li>We will set the distance of all the other vertices as infinity
+                            as default.</li>
+                        <li> We will execute five iterations as the no. of vertices are 6,
+                            to find the final distances of all vertices from source vertex
+                            and in each iteration we will do relaxing in each edge.</li>
+                    </ul>
+                </div>
+                <p><b>Relaxing :</b></p>
+                <p style="margin-left: 35px;">Relaxing means setting the value of final vertex(vertex v) as dist of
+                    initial vertex (vertex u) + weight of
+                    edge (u,v) if dist(vertex u)+weight of edge (u,v) < dist(vertex v) </p>
+                        <p style="margin-left: 35px;">We will have to do relaxing for edges
+                            (0,1),(0,2),(0,3),(2,1),(3,2),(1,4),(2,4),(3,5),(4,5)</p>
+            </div>
+            <div>
+                <p><b>Iteration-1 :</b></p>
+                <ul>
+                    <li>We will do relaxing in edge (0,1). Here,dist of v( vertex 1 )is
+                        infinity which is less than sum of dist of u( vertex 0 ) and
+                        weight( =5 ) so dist(1)= 0 + 6 = 6</li>
+                    <li>We will do relaxing for edge (0,2)
+                        Here also,dist of v( vertex 1 )is infinity which is less than sum
+                        of dist of u( vertex 0 ) and weight( =4 )
+                        so dist(2)= 0 + 4 = 4.</li>
+                    <li>For edge (0,3) : </li>
+                    <p style="margin-left: 35px;">distance of v(vertex 3) = infinity < dist of u( vertex 0 ) + weight(=5
+                            )</p>
+                            <p style="margin-left: 35px;">so dist( 3 ) = 5</p>
+                            <li> Similarly,for edge (2,1) : </li>
+                            <p style="margin-left: 35px;">dist( 1 ) = 6 < dist of vertex 2(=4 ) + weight(=-2 )</P>
+                                    <p style="margin-left: 35px;">so dist( 1 ) = 4 + ( -2 ) = 2</p>
+                                    <li>For edge (3,2) : </li>
+                                    <p style="margin-left: 35px;"> dist of vertex 3( =5 ) + weight( =-2 ) < dist of
+                                            vertex 2 (=4)</P>
+                                            <p style="margin-left: 35px;">thus, dist( vertex 2 ) = 5 - 2 = 3.</p>
+                                            <li> For edge (1,4) : </li>
+                                            <p style="margin-left: 35px;">dist of vertex 1( =6 ) + weight( =-1 ) < dist
+                                                    of vertex 4(=infinity )</P>
+                                                    <P style="margin-left: 35px;">so distance of vertex 4 = 6-1 = 5</P>
+                                                    <li> For edge (2,4) : </li>
+                                                    <p style="margin-left: 35px;">Here dist of vertex 2(=3) + weight (
+                                                        =3 )= 3 + 3 = 6 > distance of
+                                                        vertex 4( =5 )</P>
+                                                    <P style="margin-left: 35px;">So here we will not modify the dist of
+                                                        vertex 4</P>
+                                                    <P style="margin-left: 35px;">So the dist of vertex 4 will remain 5
+                                                    </P>
+                                                    <li> For edge (3,5) : </li>
+                                                    <p style="margin-left: 35px;">dist of vertex 3 ( =5 ) + weight ( =-1
+                                                        ) < dist of vertex 5(=infinity)</P>
+                                                            <P style="margin-left: 35px;">so distance of vertex 5 = 5-1
+                                                                = 4</P>
+                                                            <li> For edge (4,5) : </li>
+                                                            <p style="margin-left: 35px;">Here dist of vertex 4 ( =5 ) +
+                                                                weight( =3 ) = 5 + 3 = 8 > distance
+                                                                of vertex 5( =4 )</P>
+                                                            <P style="margin-left: 35px;">So distance of vertex 5 will
+                                                                remain same i.e 4</P>
+                </ul>
+
+            </div>
+            <div>
+                <p><b>Iteration-2 :</b></p>
+                <p>As done earlier in iteration 1 we once again do relaxation for all
+                    the edges mentioned above.</p>
+                <ul>
+                    <li>For edge (0,1) : </li>
+                    <p style="margin-left: 35px;">dist of vertex 0( =0 ) + weight( =6 ) = dist of vertex 1( =6 )</p>
+                            <p style="margin-left: 35px;">So distance of vertex 1 will remain same i.e 6.</p>
+                            <li> Similarly,for edge (0,2) : </li>
+                            <p style="margin-left: 35px;">Here dist of vertex 0 ( =0 ) + weight( =4 ) = 0 + 4 = 4 > distance
+                                of vertex 2( =3 )</P>
+                                    <p style="margin-left: 35px;">So dist of vertex 2 will remain same i.e 3.
+                                    </p>
+                                    <li>For edge (0,3) : </li>
+                                    <p style="margin-left: 35px;">dist of vertex 0( =0 ) + weight( =5 ) = dist of vertex 3( =5 )</P>
+                                            <p style="margin-left: 35px;">So distance of vertex 3 from source will remain same i.e 5.</p>
+                                            <li> For edge (2,1) : </li>
+                                            <p style="margin-left: 35px;">dist of vertex 2( =3 ) + weight( =-2 ) < dist of vertex 1(=6)</P>
+                                                    <P style="margin-left: 35px;">so distance of vertex 1 = 3 - 2 = 1</P>
+                                                    <li> For edge (3,2) : </li>
+                                                    <p style="margin-left: 35px;">dist of vertex 3( =5 ) + weight( =-2 ) = dist of vertex 2( =3 )</P>
+                                                    <P style="margin-left: 35px;">So distance of vertex 2 will remain same i.e 3.</P>
+                                                    <li> For edge (1,4) : </li>
+                                            <p style="margin-left: 35px;">dist of vertex 1 ( =1 ) + weight( =-1 ) < dist of vertex 4( =5 )
+                                            </P>
+                                                    <P style="margin-left: 35px;">so distance of vertex 4 = 1 - 1 = 0.</P>
+                                                   <li> For edge (2,4) : </li>
+                                                    <p style="margin-left: 35px;">Here dist of vertex 2 ( =3 ) + weight( =3 )= 3 + 3 = 6 > distance
+                                                        of vertex 4( =0 ).</P>
+                                                            <P style="margin-left: 35px;">So dist of vertex 4 will remain same i.e 0.</P>
+                                                            <li> For edge (3,5) : </li>
+                                                            <p style="margin-left: 35px;">dist of vertex 3( =5 ) + weight( =-1 ) = dist of vertex 5( =4 ).</P>
+                                                            <P style="margin-left: 35px;">So distance of vertex 5 will remain same i.e 4.</P>
+                                                            <li> For edge (4,5) : </li>
+                                                            <p style="margin-left: 35px;">dist of vertex 4( =0 ) + weight( =3 ) < dist of vertex 5( =4 ).</P>
+                                                            <P style="margin-left: 35px;">so distance of vertex 5 = 0 + 3 = 3.</P>
+                </ul>
+
+            </div>
+            <div>
+                <p><b>Iteration-3 :</b></p>
+                <ul>
+                    <li>For edge (0,1) : </li>
+                    <p style="margin-left: 35px;">dist of vertex 0( =0 ) + weight( =6 ) = 0 + 6 = 6 > dist of vertex
+                        1(=1).</p>
+                            <p style="margin-left: 35px;">So distance of vertex 1 will remain same i.e 1.</p>
+                            <li> Similarly,for edge (0,2) : </li>
+                            <p style="margin-left: 35px;">dist of vertex 0( =0 ) + weight( =4 ) = 0 + 4 = 4 > dist of vertex 2(
+                                =3 ).</P>
+                                    <p style="margin-left: 35px;">So distance of vertex 2 will remain same i.e 3.
+                                    </p>
+                                    <li>For edge (0,3) : </li>
+                                    <p style="margin-left: 35px;">dist of vertex 0(=0) + weight( =5 ) = dist of vertex 3( =5 ).</P>
+                                            <p style="margin-left: 35px;">So distance of vertex 3 will remain same i.e 5.</p>
+                                            <li> For edge (2,1) : </li>
+                                            <p style="margin-left: 35px;">dist of vertex 2( =3 )+weight(=-2) = 3 - 2 = 1 = dist of vertex 1( =1 ).</P>
+                                                    <P style="margin-left: 35px;">So distance of vertex 1 will remain same i.e 1.</P>
+                                                    
+                                                    
+                                                   <li> For edge (3,2) : </li>
+                                                    <p style="margin-left: 35px;">dist of vertex 3( =5 ) + weight( =-2 ) = 5 - 2 = 3 = dist of vertex 2(
+                                                        =3 ).</P>
+                                                            <P style="margin-left: 35px;">So distance of vertex 2 will remain same i.e 2.</P>
+                                                            <li> For edge (1,4) : </li>
+                                                            <p style="margin-left: 35px;">dist of vertex 1( =1 ) + weight( =-1 ) = 1 - 1 = 0 = dist of vertex 4(
+                                                                =0 )</P>
+                                                            <P style="margin-left: 35px;">So distance of vertex 4 will remain same i.e 0.</P>
+                                                            <li> For edge (2,4) : </li>
+                                                            <p style="margin-left: 35px;">dist of vertex 2( =3 ) + weight( =3 ) = 3 + 3 = 6 > dist of vertex 4(
+                                                                =0 ).</P>
+                                                            <P style="margin-left: 35px;">So distance of vertex 4 will remain same i.e 0.</P>
+                                                            <li> For edge (3,5) : </li>
+                                                            <p style="margin-left: 35px;">dist of vertex 3( =5 ) + weight( =-1 ) = 5 - 1 = 4 > dist of vertex 5(
+                                                                =3 ).</P>
+                                                            <P style="margin-left: 35px;">So distance of vertex 5 will remain same i.e 3.</P>
+                                                            <li> For edge (4,5) : </li>
+                                                            <p style="margin-left: 35px;">dist of vertex 4( =0 ) + weight( =3 ) = 0 + 3 = 3 = dist of vertex 5(
+                                                                =3 ).</P>
+                                                            <P style="margin-left: 35px;">So distance of vertex 5 will remain same i.e 3.</P>
+                </ul>
+
+            </div>
+            <div>
+                <p>We can see above in iteration 3, all the respective shortest distances
+                    of vertices from origin remained same, this means that
+                    when we execute iterations 4 and 5 the results of the relaxations
+                    would be the same as in iteration 3.</p>
+            </div>
+            <div>
+                <p><b>So our final output will be :</b></p>
+                <p style="margin-left: 35px;">The following are the shortest distances of vertices from origin:</p>
+                <p style="margin-left: 45px;">
+                 0 : 0<br>
+                 1 : 1<br>
+                 2 : 3<br>
+                 3 : 5<br>
+                 4 : 0<br>
+                 5 : 3<br>
+                </p>
+            </div>
+            <div>
+                <h3 class="introh3">Advantages :</h3>
+                <div style="margin-left: 75px;">
+                <ul>
+                    <li>Bellman-Ford gives more accurate results as compared to
+                        Dijkstra’s algorithm as in Bellman Ford we are relaxing all
+                        the edges |V|-1 times where V is no. of vertices, which are
+                        the max possible relaxations that we need to do to get the
+                        final distances from source.Whereas, in Dijkstra’s algorithm we don’t do relaxation for edge whose relaxation is already
+                        done i.e we don’t do relaxation for edges multiple times.</li>
+                        
+                    
+                </ul>
+            </div>
+            <div>
+                <h3 class="introh3">Disadvantages :</h3>
+                <div style="margin-left: 75px;">
+                <ul>
+                    <li>The bellman ford algorithm does not produce a correct answer
+                         if the sum of the edges of a cycle is negative(negative
+                        weight cycle).</li>
+                    <li> Bellman-Ford does not work with an un-directed graph.</li>    
+                    
+                </ul>
+            </div>
+            
+            </div>
+            <div>
+                <h3 class="introh3">Time Complexity :</h3>
+                <div style="margin-left: 75px;">
+                <ul>
+                    <li>Best Case Complexity O(E)</li>
+                    <li> Average Case Complexity O(V.E)</li>   
+                    <li>Worst Case Complexity O(V.E)</li>
+                    <li>Space complexity will be O(V)</li> 
+                    
+                </ul>
+                <p>Here E is the no. of edges and V is the number of vertices.</p>
+            </div>
+        </div>
+    </div>
+    <div data-pym-src="https://www.jdoodle.com/embed/v0/6gD6?stdin=0&arg=0"></div>
+    <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript">
+    </script>
+</body>
+<footer>
+    <a href="dijkstra.html"><i id="larrow" class="fa fa-arrow-left"></i></a>
+    <p id="d" style="color: white;">Dijkstra</p>
+    <a href="floydwarshal.html"><i id="rarrow" class="fa fa-arrow-right"></i></a>
+    <p id="bf" style="color: white;">Floyd Warshall</p>
+</footer>
+
+</html>

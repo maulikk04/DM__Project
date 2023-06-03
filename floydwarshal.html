@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floyd Warshall</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="background-color: black;">
+    <h1>The Shortest Path to Destination</h1>
+    <h3 class="introh3" style="text-align: center; font-size: 30px; margin-top: 10px; ">FLOYD WARSHALL ALGORITHM</h3>
+    <div class="card" style="background-color: black;">
+        <div class="card-content">
+            <div>
+                <h3 class="introh3">Introduction : </h3>
+                <ul>
+                    <li>All Pairs Shortest Path Algorithm.</li>
+                    <li>Overcomes the limitations of Dijkstra and Bellman-Ford.</li>
+                    <li>It uses Dynamic Programming approach.</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="introh3">Pseudocode for the Algorithm :</h3>
+                <div>
+                    <p style="margin-left: 100px;">void min(num1,num2){</p>
+                        <p style="margin-left: 140px;">if num1< num2 </p>
+                        <p style="margin-left: 180px;">return num1</p>
+                        <p style="margin-left: 140px;">Endif</p>
+                        <p style="margin-left: 140px;">return num2</p>
+                        <p style="margin-left: 100px;" >}</p>
+                    <p style="margin-left: 130px;">void Algorithm(D[][],node){</p>
+                        <p style="margin-left: 160px;">for k <- 0 to node</p>
+                        <p style="margin-left: 200px;">for i <- 0 to node</p>
+                        <p style="margin-left: 220px;">for j <- 0 to node</p>
+                        <p style="margin-left: 250px;">arr[i][j] <- min(D[i][j],D[i][k]+D[k][j])</p>
+                        <p style="margin-left: 220px;">Endfor</p>
+                        <p style="margin-left: 200px;">Endfor</p>
+                        <p style="margin-left: 160px;">D <- arr </p>
+                        <p style="margin-left: 160px;">Endfor</p><br>
+                        <p style="margin-left: 160px;">for i <- 0 to node</p>
+                        <p style="margin-left: 200px;">for j <- 0 to node</p>
+                        <p style="margin-left: 220px;">print arr[i][j]</p>
+                        <p style="margin-left: 200px;">Endfor</p>
+                        <p style="margin-left: 160px;">Endfor</p>
+                        <p style="margin-left: 150px;">}</p>
+                    </div>
+            </div>
+            <div>
+                <h3 class="introh3">Working of Pseudocode :</h3>
+                <ul>
+                    <li>Let us understand it step-by-step with an example :</li>
+                </ul>
+                <div style="text-align: center;">
+                    <img src="./images/image11.png">
+                </div><br>
+                <ul>
+                    <li><b>Step-1</b> : Convert the graph into a matrix such that its elements show the weight between two nodes as shown below: </li>
+                </ul>
+                <div class="container" style="text-align: center;">
+                    <div class="text">
+                        <p style="margin-top: 45px;">D :</p>
+                    </div>
+                    <div class="img">
+                        <img src="./images/matrix1.png">
+                    </div>
+                </div><br><br><br><br><br><br><br>
+                <div>
+                    <ul>
+                        <li>Note that the weight between two independent nodes is taken as infinity.</li>
+                        <li>The basic idea for the further steps is minimum(D(i-1)[i][j], D(i-1)[i][k] + D(i-1)[k][j]) , where i X j is the order of matrix and we will have to update source matrix according to total number of nodes. We will start with k=0 and increment it in each step.</li>
+                        <li>NOTE : for D0, we will take source matrix D as D(i-1).</li>
+                        <br><li><b>Step-2 :</b> Now first, keep the kth(i.e. 0) row and column of the D(i-1) matrix same and the diagonal elements 0.</li>
+                    </ul>
+                </div>
+                <div class="container" style="text-align: center;">
+                    <div class="text">
+                        <p style="margin-top: 45px;">D0 :</p>
+                    </div>
+                    <div class="img">
+                        <img src="./images/matrix2.png">
+                    </div>
+                </div><br><br><br><br><br><br><br>
+                 <div style="margin-left: 55px;">
+                    <p> - Now, we will calculate the other elements of the D0 matrix and here k=0. min() function returns the minimum value.</p>
+                    <p> - For 1 X 2 element of D0, min(D[1][2], D[1][0]+D[0][2]) = min(3,2) i.e. D0[1][2]=2.</p>
+                    <p> - For 1 X 3 element of D0, min(D[1][3], D[1][0]+D[0][3]) = min(∞,4+∞) i.e. D0[1][3]= ∞.</p>
+                    <p> - For 2 X 1 element of D0, min(D[2][1], D[2][0]+D[0][1]) = min(∞,∞) i.e. D0[2][1]= ∞.</p>
+                    <p> - For 2 X 3 element of D0, min(D[2][3], D[2][0]+D[0][3]) = min(2, ∞) i.e. D0[2][3]=2.</p>
+                    <p> - For 3 X 1 element of D0, min(D[3][1], D[3][0]+D[0][1]) = min(-1, ∞) i.e. D0[3][1]=-1.</p>
+                    <p> - For 3 X 2 element of D0, min(D[3][2], D[3][0]+D[0][2]) = min(∞, ∞) i.e. D0[3][2]= ∞.</p>
+                    <p>After the above procedures, we get D0 matrix as per below:</li>
+                    </div>
+                 <div class="container" style="text-align: center;">
+                    <div class="text">
+                        <p style="margin-top: 45px;">D0 :</p>
+                    </div>
+                    <div class="img">
+                        <img src="./images/matrix3.png">
+                    </div>
+                </div><br><br><br><br><br><br><br>
+            <div>
+                <ul>
+                     <li><p><b>Step-3 :</b>Keep the kth(i.e. 1) row and column of the D(i-1) matrix(i.e. D0) same and the diagonal elements 0.</p></li>
+                </ul>
+            </div>
+            <div class="container" style="text-align: center;">
+                <div class="text">
+                    <p style="margin-top: 45px;">D1 :</p>
+                </div>
+                <div class="img">
+                    <img src="./images/matrix4.png">
+                </div>
+            </div><br><br><br><br><br><br><br>
+            <div style="margin-left: 55px;">
+                    <p> - Now, we will calculate the other elements of the D1 matrix and here k=1.</p>
+                    <p> - For 0 X 2 element of D1, min(D0[0][2], D0[0][1]+D[1][2]) = min(-2, ∞) i.e. D1[0][2]=-2.</p>
+                    <p> - For 3 X 0 element of D1, min(D0[3][0], D0[3][1]+D0[1][0]) = min(∞,-1+4) i.e. D1[1][3]=3.</p>
+                    <p> - Similarly calculating other elements of D1, we get,</p>
+            </div>
+            <div class="container" style="text-align: center;">
+                <div class="text">
+                    <p style="margin-top: 45px;">D1 :</p>
+                </div>
+                <div class="img">
+                    <img src="./images/matrix5.png">
+                </div>
+            </div><br><br><br><br><br><br><br>
+            <div>
+                <ul><li><p><b>Step-4 : </b>Keep the kth(i.e. 2) row and column of the D(i-1) matrix(i.e. D1) same and the diagonal elements 0. Following the further instructions as per above steps, we get,</p></li></ul>
+            </div>
+            <div class="container" style="text-align: center;">
+                <div class="text">
+                    <p style="margin-top: 45px;">D2 :</p>
+                </div>
+                <div class="img">
+                    <img src="./images/matrix6.png">
+                </div>
+            </div><br><br><br><br><br><br><br>
+            <div>
+               <ul><li><p><b>Step-5 : </b>Keep the kth(i.e. 3) row and column of the D(i-1) matrix(i.e. D2) same and the diagonal elements 0. Following the further instructions as per above steps, we get,</p></li></ul>
+            </div>
+            <div class="container" style="text-align: center;">
+                <div class="text">
+                    <p style="margin-top: 45px;">D3 :</p>
+                </div>
+                <div class="img">
+                    <img src="./images/matrix7.png">
+                </div>
+            </div><br><br><br><br><br><br><br>
+            </div>
+            <ul>
+                <li>Finally, we got the shortest distance of all pairs of nodes.</li>
+                <li>You can refer the below code for algorithm:</li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <ol><li style="color: #3A9BDC; font-size: 24px;
+            font-weight: bold;"><h3 class="introh3">Floyd-Warshall Algorithm Code :</h3></li></ol>
+    </div>
+    <div  data-pym-src="https://www.jdoodle.com/embed/v0/6gKP?stdin=0&arg=0"></div>
+    <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript">
+    </script>
+    <div class="card" style="background-color: black;">
+        <div class="card-content">
+            <h3 class="introh3">Pseudocode to find shortest-path through Floyd-Warshall Algorithm : </h3>
+        </div>
+        <div>
+            <p style="margin-left: 100px;">void getPath(D[][],node,start,end){</p>
+                <p style="margin-left: 140px;">inf <- 10000000//symbolize infinity in program</p>
+                <p style="margin-left: 140px;">ArrayList journey</p>
+                <p style="margin-left: 140px;">for i <- 0 to node</p>
+                <p style="margin-left: 180px;">for j <- 0 to node</p>
+                <p style="margin-left: 220px;">if D[i][j]==inf</p>
+                <p style="margin-left: 240px;">path[i][j] <- 1</p>
+                <p style="margin-left: 220px;">Endif</p>
+                <p style="margin-left: 220px;">else</p>
+                <p style="margin-left: 240px;">path[i][j] <- j</p>
+                <p style="margin-left: 220px;">Endelse</p>
+                <p style="margin-left: 180px;">Endfor</p>
+                <p style="margin-left: 140px;">Endfor</p>
+                
+            
+                <p style="margin-left: 140px;">for k <- 0 to node</p>
+                <p style="margin-left: 180px;">for i <- 0 to node</p>
+                <p style="margin-left: 220px;">for j <- 0 to node</p>
+                <p style="margin-left: 240px;">if D[i][k]+D[k][j] < D[i][j]
+                    D[i][j] <- D[i][k]+D[k][j]
+                    path[i][j] <- path[i][k]
+                </p>
+
+                <p style="margin-left: 240px;">Endif</p>
+                <p style="margin-left: 220px;">Endfor</p>
+                <p style="margin-left: 180px;">Endfor</p>
+                <p style="margin-left: 140px;">D <- arr</p><br>
+                <p style="margin-left: 140px;">Endfor</p>
+                <p style="margin-left: 140px;">while start!=end</p>
+                <p style="margin-left: 180px;">journey.add(start)</p>
+                <p style="margin-left: 180px;">start <- path[start][end]</p>
+                <p style="margin-left: 140px;">Endwhile</p>
+                <p style="margin-left: 140px;">print journey</p>
+                <p style="margin-left: 140px;">}</p>
+            </div>
+    </div>
+    <p style="color:#3A9BDC; font-size: 24px;
+    font-weight: bold;">2.Shortest-Path code through Floyd-Warshall :</p>
+    <div  data-pym-src="https://www.jdoodle.com/embed/v0/6gVw?stdin=0&arg=0"></div>
+    <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript">
+    </script>
+    <div class="card" style="background-color: black;">
+        <div class="card-content">
+            <div>
+                <h3 class="introh3">Advantages : </h3>
+                <ul>
+                    <li>Gives shortest path for all pairs of nodes.</li>
+                    <li>Can find the shortest path in a weighted graph with positive or negative edge weights.</li>
+                    <li>Also works for negative cycle.</li>
+                    <li>It can handle large graphs easily.</li>
+                </ul>
+             </div>
+            <div>
+                <h3 class="introh3">Disadvantages : </h3>
+                <ul>
+                    <li>The Algorithm is quite complex and can be difficult to understand.</li>
+                    <li>The Algorithm can be slow when used on very large graphs.</li>
+                </ul>
+             </div>
+         
+         
+            <h3 class="introh3">Time Complexity : O(n^3)</h3>
+            <h3 class="introh3">Space Complexity : O(n^2)</h3>
+            <p style="margin-left: 70px">Note: n=number of nodes</p>
+        
+         
+        </div>
+    </div>
+    <a href="bellmanford.html"><i id="larrow"class="fa fa-arrow-left"></i></a>
+    <p id="d" style="color: white;">Bellman Ford</p>
+    <a href="index.html"><i id="rarrow" class="fa fa-home"></i></a>
+
+</body>
+</html>
+
+
+
+
